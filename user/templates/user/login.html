@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录云笔记</title>
+    <script>
+        {{ script|safe }}
+    </script>
+    <style>
+        body {
+            font-family: '微软雅黑';
+            padding-top: 50px;
+            text-align: center;
+            font-size: 24px;
+        }
+        form {
+            display: inline-block;
+            width: 465px;
+        }
+        div {
+            width: 465px;
+            height: 350px;
+            padding-left: 15px;
+            border-radius: 15px;
+            border: 2px solid #f5f5f5;
+            background-color: #f5f5f5;
+        }
+        .inp, .sub, .check {
+            float: right;
+            clear: both;
+            margin-top: 8px;
+            margin-right: 45px;
+        }
+        .inp {
+            width: 250px;
+            height: 25px;
+            font-size: 20px;
+        }
+        .sub {
+            width: 48px;
+            height: 35px;
+            font-size: 18px;
+            margin-right: 35px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="/user/log/">
+        <div class="d">
+            <p>
+                <h3>登录用户</h3>
+            </p>
+            <p>
+                用户名 :<input type="text" name="username" value="{{ username }}" class="inp">
+            </p>
+            <p>
+                密码 :<input type="text" name="password" value="{{ password }}" class="inp">
+            </p>
+            <span class="check">
+                <input type="checkbox" name="remember"> 记住密码
+            </span>
+            <p class="sub">
+                <input type="submit" value="登录" class="sub">
+            </p>
+        </div>
+    </form>
+</body>
+</html>

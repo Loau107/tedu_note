@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加笔记</title>
+    <script>
+        {{ script|safe }}
+    </script>
+    <style>
+        body {
+            padding-top: 30px;
+            font-family: '微软雅黑';
+            font-size: 24px;
+            text-align: center;
+        }
+        a {
+            display: inline-block;
+            width: 56px;
+            height: 33px;
+            font-size: 24px;
+            color: #000;
+            text-decoration: none;
+        }
+        .sub {
+            border: 0px;
+            background: #fff;
+            font-size: 24px;
+        }
+        a:hover, .sub:hover {
+            cursor:move;
+            color: #3e5d5d;
+        }
+        .con-tit {
+            margin: auto;
+            width: 500px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <form action="/note/add/" method="post">
+            <p>
+                标题 :&emsp;
+                <input type="text" name="title" style="width: 315px; height: 33px; font-size: 20px">
+                <a href="/note/list/" style="">取消</a>
+                <input type="submit" class="sub" value="保存">
+            </p>
+            <p class="con-tit">
+                笔记内容 :
+            </p>
+            <p>
+                <textarea style="width: 525px; height: 600px; font-size: 20px" cols="45" rows="25" name="content"></textarea>
+            </p>
+    </form>
+</body>
+</html>

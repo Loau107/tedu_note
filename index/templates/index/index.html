@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云笔记首页</title>
+    <style>
+        body {
+            padding: 45px 150px 0 150px;
+            font-family: '微软雅黑';
+            font-size: 34px;
+        }
+        a {
+            color: #001ba0;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #7a0090;
+        }
+    </style>
+</head>
+<body>
+    {% if request.session.username %}
+        <p>
+            欢迎 {{ request.session.username }} ！
+        </p>
+        <p>
+            <a href="/note/list/">进入我的笔记</a>
+        </p>
+        <p>
+            <a href="/user/logout/">退出登录</a>
+        </p>
+    {% elif request.COOKIES.username %}
+        <p>
+            欢迎 {{ request.COOKIES.username }} ！
+        </p>
+        <p>
+            <a href="/note/list/">进入我的笔记</a>
+        </p>
+        <p>
+            <a href="/user/logout/">退出登录</a>
+        </p>
+    {% else %}
+        <p style="text-decoration: underline">
+            云笔记
+        </p>
+        <p>
+            <a href="/user/log/">登录</a>
+        </p>
+        <p>
+            <a href="/user/reg/">注册</a>
+        </p>
+    {% endif %}
+</body>
+</html>

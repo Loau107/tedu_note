@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>笔记列表</title>
+    <style>
+        body {
+            padding: 45px 200px 0 150px;
+            font-family: '微软雅黑';
+            font-size: 34px;
+        }
+        .tit{
+            margin-top: 15px;
+            float: right;
+            clear: both;
+        }
+        a {
+            color: #001ba0;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #7a0090;
+        }
+    </style>
+</head>
+<body>
+    <span style="float: right; clear: both; font-size: 25px">欢迎 {{ username }} ！</span>
+    <a href="/note/add/" class="tit">添加新笔记</a>
+    <a href="/note/list_delete/" class="tit">找回笔记</a>
+    <a href="/index/" class="tit">返回首页</a>
+    {% if l > 0 %}
+    <table>
+        <tr>
+            <th>ID&emsp;</th>
+            <th>标题&emsp;</th>
+            <th>创建时间&emsp;</th>
+            <th>修改时间&emsp;</th>
+            <th>修改&emsp;</th>
+            <th>删除</th>
+        </tr>
+        {% for note in all_note %}
+        <tr>
+            <td>{{ forloop.counter }}&emsp;</td>
+            <td><a href="/note/view?id={{ note.id }}">{{ note.title }}&emsp;</a></td>
+            <td>{{ note.create_time }}&emsp;</td>
+            <td>{{ note.update_time }}&emsp;</td>
+            <td>
+                <a href="/note/update?id={{ note.id }}" class="op">修改</a>
+            </td>
+            <td>
+                <a href="/note/delete?id={{ note.id }}" class="op">删除</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p style="color: red;">
+            未添加笔记
+        </p>
+    {% endif %}
+</body>
+</html>

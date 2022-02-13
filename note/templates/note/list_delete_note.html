@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找回笔记</title>
+    <style>
+
+        body {
+            padding: 45px 180px 0 150px;
+            font-family: '微软雅黑';
+            font-size: 34px;
+        }
+        .tit{
+            float: right;
+            clear: both;
+        }
+        a {
+            color: #001ba0;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #7a0090;
+        }
+    </style>
+</head>
+<body style="font-family: '微软雅黑';">
+    {% if l > 0 %}
+    已删除笔记 :
+    <a href="/note/list/" class="tit">取消</a>
+    <table>
+        <tr>
+            <th>ID&emsp;</th>
+            <th>标题&emsp;</th>
+            <th>创建时间&emsp;</th>
+            <th>删除时间&emsp;</th>
+            <th>查看&emsp;</th>
+            <th>找回</th>
+        </tr>
+        {% for note in all_delete_note %}
+        <tr>
+            <td>{{ forloop.counter }}&emsp;</td>
+            <td><a href="/note/view?id={{ note.id }}">{{ note.title }}&emsp;</a></td>
+            <td>{{ note.create_time }}&emsp;</td>
+            <td>{{ note.update_time }}&emsp;</td>
+            <td>
+                <a href="/note/view?id={{ note.id }}">查看</a>
+            </td>
+            <td>
+                <a href="/note/retrieve?id={{ note.id }}">找回</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p style="color: red;">
+            当前不存在已删除笔记
+        </p>
+        <p>
+            <a href="/note/list">返回</a>
+        </p>
+    {% endif %}
+</body>
+</html>
